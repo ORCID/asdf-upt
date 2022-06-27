@@ -45,12 +45,29 @@ download_release() {
     platform="apple-darwin"
   elif [[ "$platform_test" = linux ]]; then
     platform="unknown-linux-gnu"
+  else
+    platform="pc-windows-msvc.exe"
+  fi
+
+  if detect_musl; then
+    platform="linux-musl"
   fi
 
   url="$GH_REPO/releases/download/v${version}/upt-${arch}-${platform}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+}
+
+detect_musl() {
+  # Detect Musl C library.
+  libc=$(ldd /bin/ls | grep 'musl' | head -1 | cut -d ' ' -f1)
+  if [ -z $libc ]; then
+    # This is not Musl.
+    return 1
+  else
+    return 0
+  fi
 }
 
 install_version() {
