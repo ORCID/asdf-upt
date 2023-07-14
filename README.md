@@ -3,7 +3,7 @@
 # asdf-upt [![Build](https://github.com/ORCID/asdf-upt/actions/workflows/build.yml/badge.svg)](https://github.com/ORCID/asdf-upt/actions/workflows/build.yml) [![Lint](https://github.com/ORCID/asdf-upt/actions/workflows/lint.yml/badge.svg)](https://github.com/ORCID/asdf-upt/actions/workflows/lint.yml)
 
 
-[upt](https://github.com/sigoden/upt) plugin for the [asdf version manager](https://asdf-vm.com).
+[upt](https://github.com/ORCID/upt) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
