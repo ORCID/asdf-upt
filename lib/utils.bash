@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-GH_REPO="https://github.com/ORCID/asdf-upt.git"
+GH_REPO="https://github.com/ORCID/upt"
 TOOL_NAME="upt"
 TOOL_TEST="upt"
 
