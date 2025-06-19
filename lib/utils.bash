@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-GH_REPO="https://github.com/ORCID/upt"
+GH_REPO="https://github.com/sigoden/upt"
 TOOL_NAME="upt"
 TOOL_TEST="upt"
 
@@ -41,6 +41,8 @@ download_release() {
 
   local arch=$(uname -m | tr '[:upper:]' '[:lower:]')
 
+  [ "$arch" = "arm64" ] && arch="aarch64"
+
   if [[ "$platform_test" = darwin ]]; then
     platform="apple-darwin"
   elif [[ "$platform_test" = linux ]]; then
@@ -53,7 +55,7 @@ download_release() {
     platform="linux-musl"
   fi
 
-  url="$GH_REPO/releases/download/v${version}/upt-${arch}-${platform}"
+  url="$GH_REPO/releases/download/v${version}/upt-v${version}-${arch}-${platform}.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
